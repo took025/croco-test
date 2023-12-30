@@ -1,0 +1,34 @@
+$green : #15AF44;
+$white: #fff;
+$lightGrey : #6a7787;
+$darkGrey : #1a1e23;
+$hoverGrey : #454D57;
+$darkGrey2 : #272d36;
+$navigation : #2a3139;
+$header : #252b33;
+@mixin mobile-lg {
+    @media screen and (max-width: 720px) {
+      @content;
+    }
+  }
+@mixin tablet {
+    @media screen and (max-width: 900px) {
+      @content;
+    }
+  }
+@mixin web-md {
+    @media screen and (max-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin web-lg {
+    @media screen and (max-width: 1220px) {
+      @content;
+    }
+  }
+  @mixin web-xl {
+    @media screen and (max-width: 1400px) {
+      @content;
+    }
+  }

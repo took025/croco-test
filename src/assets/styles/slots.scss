@@ -1,0 +1,209 @@
+@import './variables.scss';
+// main grdin container 
+.grid-container {
+    display: grid;
+    grid-template-columns: 80px 1fr; /* Sidebar and Content areas */
+    grid-template-rows: 80px 1fr;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar content";
+    min-height:100vh;
+}
+
+header {
+    grid-area: header;
+    background-color: $header;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+nav {
+    grid-area: sidebar;
+    padding: 10px;
+    background-color: $navigation
+}
+
+main {
+    grid-area: content;
+    padding: 8px;
+    background-color: $darkGrey ;
+}
+.navigation__ul {
+    margin-top: 40px;
+    .navigation__li {
+        margin-top: 40px;
+        .navigation__a {
+            color: $lightGrey;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            &.active {
+                filter: brightness(0) invert(1) grayscale(100%) contrast(100%);
+            }
+            img {
+                margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+// reset 
+
+body {
+    margin: 0;
+    font-family: google-font;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    li {
+        list-style-type: none;
+    }
+}
+a {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+// slots [age ]
+.banner__section {
+    min-height: 420px;
+    height: 200px;
+    background-image: url(/assets/images/banner.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slot-grid-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+    column-gap: 10px;
+    @include web-xl {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    @include web-lg {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    @include web-md {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @include tablet {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include mobile-lg {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.grid-item {
+    margin: 5px 0;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    background-color: $darkGrey ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 180px;
+    position: relative;
+    .text {
+        background-color: $darkGrey2;
+        width: 100%;
+        color: $white;
+        min-height: 38px;
+        padding: 5px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        transition: 0.3s;
+    }
+    .play__overlay {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height:calc(100% - 48px);
+        z-index: 15;
+        background-color: rgba(0, 0, 0 , 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        .play__button {
+            background-color: $green;
+            color: $white;
+            border: none;
+            width: 80%;
+            height: 36px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    }
+    &:hover {
+        .play__overlay {
+            visibility:visible;
+            opacity: 1;
+        }
+        .text {
+            background-color: $hoverGrey;
+        }
+    }
+}
+
+.grid-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2; 
+}
+
+.category__section {
+    background-color: $darkGrey2;
+    position: relative;
+    .slot__categories {
+        max-height: 53px;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+        transition: max-height 0.3s ease-in-out;
+        max-width: 95%;
+        @include web-xl {
+            width: 90%;
+        }
+        .slot-category {
+            min-height: 53px;
+            color: $white;
+            margin: 0 25px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        &.active {
+            max-height: 1000px;
+            overflow: visible;
+            .see__more {
+                img {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        .see__more {
+            color: $white;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+            z-index: 100;
+            img {
+                transition: 0.3s;
+            }
+        }
+    }
+}

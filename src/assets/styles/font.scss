@@ -1,0 +1,9 @@
+$font-path: "/assets/fonts/";
+
+@mixin font-face($name, $file) {
+  @font-face {
+    font-family: "#{$name}";
+    src: url($font-path + $name + ".ttf") format("truetype");
+  }
+}
+@include font-face("google-font", "google-font");

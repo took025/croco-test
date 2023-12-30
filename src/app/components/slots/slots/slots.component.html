@@ -1,0 +1,26 @@
+<section class="banner__section">
+</section>
+<section class="category__section">
+    <ng-container *ngIf="slotCategories?.length">
+        <div class="slot__categories" [ngClass]="{'active': categoryDropDown}">
+            <div class="slot-category" *ngFor="let category of slotCategories.slice(0, maxItemsToShow)" (click)="filterSlots( category)">
+                {{category.name | uppercase}}
+            </div>
+            <div class="see__more" (click)="toggleDrodown()">see {{!categoryDropDown ? 'more' : 'less'}}
+                <img src="assets/images/arrow-down.svg" alt="">
+            </div>
+        </div>
+    </ng-container>
+</section>
+<section class="slots__Section">
+    <ng-container *ngIf="slotsData?.length">
+        <div class="slot-grid-container">
+            <div class="grid-item" [style.backgroundImage]="'url(' + slot.image + ')'" *ngFor="let slot of slotsData">
+                <span class="text">{{slot?.name}}</span>
+                <div class="play__overlay">
+                    <button class="play__button">PLAY</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</section>
