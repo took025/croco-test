@@ -3,8 +3,8 @@ import { Routes } from "@angular/router";
 export const routes: Routes = [
   {
     path: "slots",
-    loadChildren: () =>
-      import("./components/slots/slots.module").then((m) => m.SlotsModule),
+    loadComponent: () =>
+      import("./components/slots/slots/slots.component").then(c => c.SlotsComponent),
   },
   {
     path: "",
