@@ -1,29 +1,35 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { gamesInterface, slotCategoriesInterface, slotsInterface } from "./interface";
+import { Observable, catchError, map, throwError } from "rxjs";
+import {
+  ProviderResponse,
+  Slots,
+  Providers,
+  SlotsResponse,
+} from "./interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class SlotsService {
   constructor(private http: HttpClient) {}
-  getSlots(): Observable<slotsInterface[]> {
-    return this.http.get<slotsInterface[]>(
-      "/v2/slot/categories?include=games"
-    );
+
+  getSlotsByProvider(provider:string): Observable<Slots[]> {
+    return this.http
+      .get<SlotsResponse>(`/v2/slot/providers/${provider}`)
+      .pipe(map((items) => items?.data),
+      catchError(error => this.handleError(error)));
   }
 
-  getSlotsByProvider(provider): Observable<slotsInterface[]> {
-    return this.http.get<slotsInterface[]>(
-      `/v2/slot/providers/${provider}`
-    );
+  getCategories(): Observable<Providers[]> {
+    return this.http
+      .get<ProviderResponse>("?type=slot&platform=desktop")
+      .pipe(map((items) => items?.data),
+      catchError(error => this.handleError(error)));
   }
 
-
-  getCategories(): Observable<gamesInterface[]> {
-    return this.http.get<gamesInterface[]>(
-      "?type=slot&platform=desktop"
-    );
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred:', error);
+    return throwError('Something went wrong');
   }
 }

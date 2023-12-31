@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: "slots",
     loadComponent: () =>
-      import("./components/slots/slots/slots.component").then(c => c.SlotsComponent),
+      import("./components/slots/slots.component").then(c => c.SlotsComponent),
   },
   {
     path: "",

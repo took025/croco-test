@@ -1,5 +1,5 @@
-export interface slotCategoriesInterface {
-  games: [string];
+export interface Providers {
+  games: Slots[];
   iframeH: number;
   iframeW: number;
   name: string;
@@ -11,17 +11,10 @@ export interface slotCategoriesInterface {
   vendor: string;
 }
 
-export interface slotsInterface {
-  category: string;
-  games: [];
-  name: string;
-  order: number;
-  platform: string;
-  totalGames: number;
-  type: string;
+export interface SlotsResponse {
+  data : Slots[]
 }
-
-export interface gamesInterface {
+export interface Slots {
   gameId: string;
   game_id: number;
   image: string;
@@ -34,4 +27,21 @@ export interface gamesInterface {
   stats: [];
   tags: [];
   url: string;
+}
+
+export interface ProviderResponse {
+  data: Providers[];
+}
+
+export interface SlotsByProvider {
+  games: Slots[];
+  iframeH: number;
+  iframeW: number;
+  name: string;
+  order: number;
+  provider: string;
+  tags: [string];
+  totalGames: number;
+  type: string;
+  vendor: string;
 }
