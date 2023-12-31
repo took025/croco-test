@@ -7,7 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { Subject, takeUntil } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Providers, Slots } from "../../core/interface";
+import { Providers, Slots, SlotsByProvider } from "../../core/interface";
 import { SlotsService } from "../../core/slots.service";
 import { defaultActiveCategory, defaultMaxItems } from "../../core/util";
 
@@ -70,9 +70,9 @@ export class SlotsComponent {
     this.slotService
       .getSlotsByProvider(provider)
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((res: Slots[]) => {
+      .subscribe((slots: SlotsByProvider) => {
         this.queryParamsSet(provider);
-        this.slotsData = res ? res["games"] : null;
+        this.slotsData = slots?.games ? slots?.games : null;
         this.loader = true;
         this.chd.markForCheck();
       });

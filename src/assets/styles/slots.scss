@@ -192,8 +192,24 @@ a {
             display: flex;
             align-items: center;
             cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: -4px;
+                width: 0;
+                background-color: $green;
+                height: 8px;
+                border-radius: 10px;
+                transition: 0.3s;
+            }
             &.active {
-                color: red;
+                &::after {
+                    left: 0;
+                    width: 100%;
+                }
             }
         }
         &.active {

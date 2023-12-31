@@ -6,6 +6,7 @@ import {
   Slots,
   Providers,
   SlotsResponse,
+  SlotsByProvider,
 } from "./interface";
 
 @Injectable({
@@ -14,7 +15,7 @@ import {
 export class SlotsService {
   constructor(private http: HttpClient) {}
 
-  getSlotsByProvider(provider:string): Observable<Slots[]> {
+  getSlotsByProvider(provider:string): Observable<SlotsByProvider> {
     return this.http
       .get<SlotsResponse>(`/v2/slot/providers/${provider}`)
       .pipe(map((items) => items?.data),
@@ -28,8 +29,9 @@ export class SlotsService {
       catchError(error => this.handleError(error)));
   }
 
-  private handleError(error: any): Observable<never> {
+  private handleError(error: Error): Observable<never> {
     console.error('An error occurred:', error);
+    alert('Something went wrong')
     return throwError('Something went wrong');
   }
 }
