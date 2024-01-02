@@ -8,6 +8,7 @@ export interface Providers {
   totalGames: number;
   type: string;
   vendor: string;
+  _id: string;
 }
 
 export interface SlotsResponse {

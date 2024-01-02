@@ -57,21 +57,20 @@ export class SlotsComponent {
         if (paramValue) {
           this.queryParamsSet(paramValue);
           this.getSlots(paramValue);
-          this.activeProvider = paramValue;
         } else {
           this.queryParamsSet(defaultActiveCategory);
           this.getSlots(defaultActiveCategory);
         }
       });
-  }
-
-  getSlots(provider) {
-    this.loader = false;
-    this.slotService
+    }
+    
+    getSlots(provider) {
+      this.loader = false;
+      this.slotService
       .getSlotsByProvider(provider)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((slots: SlotsByProvider) => {
-        this.queryParamsSet(provider);
+        this.activeProvider = provider;
         this.slotsData = slots?.games ? slots?.games : null;
         this.loader = true;
         this.chd.markForCheck();

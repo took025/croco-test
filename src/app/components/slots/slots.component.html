@@ -1,29 +1,41 @@
 <section class="banner__section">
 </section>
 <section class="category__section">
-    <ng-container *ngIf="slotCategories?.length">
-        <div class="slot__categories" [ngClass]="{'active': categoryDropDown}">
-            <div class="slot-category" *ngFor="let category of slotCategories.slice(0, maxItemsToShow)"
-                [ngClass]="{'active': activeProvider === category.provider}" (click)="getSlots( category.provider)">
-                {{category.name | uppercase}}
-            </div>
-            <div class="see__more" (click)="toggleDrodown()">see {{!categoryDropDown ? 'more' : 'less'}}
-                <img src="assets/images/arrow-down.svg" alt="">
-            </div>
+    @if (slotCategories?.length) {
+    <div class="slot__categories" [ngClass]="{'active': categoryDropDown}">
+        @for (category of slotCategories.slice(0, maxItemsToShow); track category._id) {
+        <div class="slot-category" [ngClass]="{'active': activeProvider === category.provider}"
+            (click)="getSlots( category.provider)">
+
+            {{category.name | uppercase}}
         </div>
-    </ng-container>
+        <div class="see__more" (click)="toggleDrodown()">see {{!categoryDropDown ? 'more' : 'less'}}
+            <img src="assets/images/arrow-down.svg" alt="">
+        </div>
+        }
+        @empty {
+        No categories
+        }
+    </div>
+    }
 </section>
 <section class="slots__Section">
-    <ng-container *ngIf="slotsData?.length">
+    @if(slotsData?.length){
         <div class="slot-grid-container">
-            <div class="grid-item" [style.backgroundImage]="'url(' + slot?.image + ')'" *ngFor="let slot of slotsData">
+            @for(slot of slotsData; track slot.gameId) {
+            <div class="grid-item" [style.backgroundImage]="'url(' + slot?.image + ')'">
                 <span class="text">{{slot?.name}}</span>
                 <div class="play__overlay">
                     <button class="play__button">PLAY</button>
                 </div>
             </div>
+            }@empty {
+            No slots
+            }
         </div>
-    </ng-container>
+    }@else {
+    Somethisng is not correct
+    }
 </section>
 <div class="loader__content" *ngIf="!loader">
     <div class="loader">
