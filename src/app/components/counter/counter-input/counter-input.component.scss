@@ -1,0 +1,24 @@
+.btn {
+    width: 200px;
+    height: 40px;
+    margin-right: 10px;
+}
+.btn-rimary {
+    background-color: aqua;
+    color: black;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.input {
+    color: black;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+    border-radius: 8px; 
+    padding-left: 15px;
+}

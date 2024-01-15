@@ -1,0 +1,14 @@
+<div style="    display: flex;
+justify-content: center;
+padding-bottom: 30px; flex-direction: column; align-items: center; padding-bottom: 40px;">
+
+    <div style="margin-top: 20px;">
+        <input class="input" type="number" placeholder="add counter" [(ngModel)]="value">
+        <button style="margin-top: 20px;" class="btn btn-rimary" (click)="onAdd()">add counter</button>
+    </div>
+    {{channelName$ | async}}
+    <!-- <input type="text" placeholder="test" [(ngModel)]="channelName"> -->
+    <!-- <div style="margin-top: 20px;">
+        <button class="btn btn-rimary" (click)="changeChaneel()">change text</button>
+    </div> -->
+</div>

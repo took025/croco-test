@@ -2,10 +2,23 @@
 
   <div class="grid-container">
     <header>
+      @if ((userInfo$ | async).name) {
+      <div class="user__info" style="text-align: end;width: 100%;">
+        {{(userInfo$ | async).name}}&nbsp;
+        {{(userInfo$ | async).surrName}}
+        <a class="log__out" (click)="logout()">log out</a>
+      </div>
+      } @else {
+      <div class="user__info" style="text-align: end; width: 100%;">
+        {{userData.name}}&nbsp;
+        {{userData.surrName}}
+        <a class="log__out" (click)="logout()">log out</a>
+      </div>
+      }
     </header>
     <nav class="navbar">
       <ul class="navigation__ul">
-        <a class="logo" [routerLink]="['/']">
+        <a class="logo" [routerLink]="['/slots']">
           <img src="assets/images/logo.svg" alt="">
         </a>
         <li class="navigation__li">
@@ -15,9 +28,9 @@
           </a>
         </li>
         <li class="navigation__li">
-          <a class="navigation__a">
+          <a class="navigation__a" routerLink="counter" routerLinkActive="active">
             <img src="assets/images/casino-icon.svg" alt="">
-            casino
+            counter
           </a>
         </li>
       </ul>

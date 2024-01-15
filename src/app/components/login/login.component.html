@@ -1,0 +1,20 @@
+<section class="login-section">
+    <div class="container">
+        <form class="login-form" [formGroup]="loginForm">
+            <h2>Login</h2>
+            <label for="name">name:</label>
+            <input type="text" formControlName="name" id="name" name="name"
+                placeholder="Enter your name" required>
+
+            <label for="surrName">surrName:</label>
+            <input type="text" formControlName="surrName" id="surrName" name="surrName"
+                placeholder="Enter your surrName" required>
+
+            <label for="password">Password:</label>
+            <input type="password" formControlName="password" id="password" name="password"
+                placeholder="Enter your password" required>
+
+            <button type="submit" (click)="tryLogIn()">Login</button>
+        </form>
+    </div>
+</section>

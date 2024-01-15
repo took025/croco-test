@@ -7,8 +7,18 @@ export const routes: Routes = [
       import("./components/slots/slots.component").then(c => c.SlotsComponent),
   },
   {
+    path: "counter",
+    loadComponent: () =>
+      import("./components/counter/counter/counter.component").then(c => c.CounterComponent),
+  },
+  {
+    path: "log-in",
+    loadComponent: () =>
+      import("./components/login/login.component").then(c => c.LoginComponent),
+  },
+  {
     path: "",
-    redirectTo: "slots",
+    redirectTo: "log-in",
     pathMatch: "full",
   },
 ];

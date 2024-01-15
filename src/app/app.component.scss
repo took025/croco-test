@@ -1,0 +1,15 @@
+.user__info {
+    &:hover {
+        .log__out {
+            visibility: visible;
+            opacity: 1;
+
+        }
+    }
+    .log__out {
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+}
