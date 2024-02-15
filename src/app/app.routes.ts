@@ -4,17 +4,35 @@ export const routes: Routes = [
   {
     path: "slots",
     loadComponent: () =>
-      import("./components/slots/slots.component").then(c => c.SlotsComponent),
+      import("./components/slots/slots.component").then(
+        (c) => c.SlotsComponent
+      ),
   },
   {
     path: "counter",
     loadComponent: () =>
-      import("./components/counter/counter/counter.component").then(c => c.CounterComponent),
+      import("./components/counter/counter/counter.component").then(
+        (c) => c.CounterComponent
+      ),
   },
   {
     path: "log-in",
     loadComponent: () =>
-      import("./components/login/login.component").then(c => c.LoginComponent),
+      import("./components/login/login.component").then(
+        (c) => c.LoginComponent
+      ),
+  },
+  {
+    path: "signals",
+    loadComponent: () =>
+      import("./components/signals/signals.component").then(
+        (c) => c.SignalsComponent
+      ),
+  },
+  {
+    path: "testRoutes",
+    loadChildren: () =>
+      import("./components/counter/counter-router").then((r) => r.testRoutes),
   },
   {
     path: "",

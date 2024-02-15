@@ -2,11 +2,13 @@ import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { decriment, incriment, reset } from "../state/counter.actions";
+import { TestComponent } from "../../../shared/components/test/test.component";
+import { ExponentialStrengthPipe } from "../../../shared/pipes/greetPipe";
 
 @Component({
   selector: "app-counter-buttons",
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TestComponent, ExponentialStrengthPipe],
   templateUrl: "./counter-buttons.component.html",
   styleUrl: "./counter-buttons.component.scss",
 })

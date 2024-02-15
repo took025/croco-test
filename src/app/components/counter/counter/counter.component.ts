@@ -3,11 +3,17 @@ import { CounterOutputComponent } from "../counter-output/counter-output.compone
 import { CounterButtonsComponent } from "../counter-buttons/counter-buttons.component";
 import { Store } from "@ngrx/store";
 import { CounterInputComponent } from "../counter-input/counter-input.component";
+import { TestComponent } from "../../../shared/components/test/test.component";
 
 @Component({
   selector: "app-counter",
   standalone: true,
-  imports: [CounterOutputComponent, CounterButtonsComponent, CounterInputComponent],
+  imports: [
+    CounterOutputComponent,
+    CounterButtonsComponent,
+    CounterInputComponent,
+    TestComponent,
+  ],
   templateUrl: "./counter.component.html",
   styleUrl: "./counter.component.scss",
 })

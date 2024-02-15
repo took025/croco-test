@@ -28,8 +28,8 @@ export interface Slots {
   order: number;
   provider: string;
   providerName: string;
-  stats:any[];
-  tags:any[];
+  stats: any[];
+  tags: any[];
   url: string;
 }
 
@@ -39,4 +39,15 @@ export interface ProviderResponse {
 
 export interface SlotsByProvider extends Providers {
   games: Slots[];
+}
+
+export interface TodoInterface {
+  id: string;
+  text: string;
+  isCompleted: boolean;
+}
+export enum FilterEnum {
+  all = "all",
+  active = "active",
+  completed = "completed",
 }
