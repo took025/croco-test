@@ -1,0 +1,26 @@
+.service-grid-container {
+    flex-flow: column;
+    width: 55%;
+    display: flex;
+    ._2023-service-div {
+        background-color: #fff;
+        border: 1px solid rgba(152, 170, 195, 0.1);
+        border-radius: 0;
+        margin-bottom: 100px;
+        padding: 42px;
+        display: flex;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 150px;
+        box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.05);
+    }
+    .service-sticky-4 {
+        grid-column-gap: 12px;
+        grid-row-gap: 12px;
+        flex-direction: column;
+        align-items: center;
+
+        box-shadow: none;
+        top: 120px;
+    }
+}

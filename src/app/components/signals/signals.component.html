@@ -1,5 +1,45 @@
-<div class="todoapp">
+<!-- <div class="todoapp">
     <app-signals-header></app-signals-header>
     <app-signals-main></app-signals-main>
     <app-signals-footer></app-signals-footer>
+    <input style="margin-top: 60px;" type="text" value="Eliseo@gardner.biz" (keydown.enter)="onSearch($event)">
+
+    @if(true) {
+
+    } @else {
+
+    }
+
+    @for(slot of articlesSignal(); track slot) {
+    <span>
+        {{slot.email | json}}
+    </span>
+    } @empty {
+
+    }
+
+    @for (item of todosSignal(); track item.id) {
+    {{item.id}}
+    }
+</div> -->
+<div class="marquee-container">
+    <div class="marquee">
+        <div class="marquee-content" *ngFor="let item of items">
+            {{ item.text }}
+        </div>
+        <div class="marquee-content" *ngFor="let item of items">
+            {{ item.text }}
+        </div>
+    </div>
 </div>
+<div class="marquee-container">
+    <div class="marquee marquee-reverse">
+        <div class="marquee-content" *ngFor="let item of items">
+            {{ item.text }}
+        </div>
+        <div class="marquee-content" *ngFor="let item of items">
+            {{ item.text }}
+        </div>
+    </div>
+</div>
+<app-scroll-position></app-scroll-position>

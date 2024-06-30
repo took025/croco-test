@@ -5,5 +5,6 @@ export interface CounterState {
 
 export const initiallState: CounterState = {
   counter: 0,
-  channelName: 'test'
+  channelName: "test",
 };
+// resolution services

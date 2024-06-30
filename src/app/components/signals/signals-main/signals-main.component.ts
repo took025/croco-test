@@ -1,4 +1,4 @@
-import { Component, computed, inject } from "@angular/core";
+import { Component, computed, effect, inject } from "@angular/core";
 import { SignalsService } from "../../../core/signals.service";
 import { NgFor, NgIf } from "@angular/common";
 import { FilterEnum } from "../../../core/interface";
@@ -17,6 +17,16 @@ export class SignalsMainComponent {
   noTodoClass = computed(
     (): boolean => this.todoService.toDoSiig().length !== 0
   );
+
+  constructor() {
+    effect(() => {
+      // console.log("this changed " + this.todoService.filterSig());
+      console.log(
+        `The isActive signal changed value to ${this.visibleTodos()}`
+      );
+    });
+  }
+
   visibleTodos = computed(() => {
     const todos = this.todoService.toDoSiig();
     const filter = this.todoService.filterSig();

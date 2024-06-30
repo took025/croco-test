@@ -38,6 +38,8 @@ export class SlotsComponent {
   ) {}
 
   ngOnInit(): void {
+    const btn = document.getElementById("test");
+    btn.addEventListener("click", () => {});
     this.queryParamFunction();
     this.getCategories();
   }
@@ -63,11 +65,11 @@ export class SlotsComponent {
           this.getSlots(defaultActiveCategory);
         }
       });
-    }
-    
-    getSlots(provider) {
-      this.loader = false;
-      this.slotService
+  }
+
+  getSlots(provider) {
+    this.loader = false;
+    this.slotService
       .getSlotsByProvider(provider)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((slots: SlotsByProvider) => {
@@ -91,14 +93,15 @@ export class SlotsComponent {
     this.slotService
       .getCategories()
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((providers: Providers[]) => {
-        this.slotCategories = providers;
-        this.chd.markForCheck();
-      } , 
-      (error) => {
-        console.log(error);
-        
-      });
+      .subscribe(
+        (providers: Providers[]) => {
+          this.slotCategories = providers;
+          this.chd.markForCheck();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   ngOnDestroy(): void {
